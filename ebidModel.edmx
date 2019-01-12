@@ -1,0 +1,2488 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ebidModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="addmintracking">
+          <Key>
+            <PropertyRef Name="mintrackingid" />
+          </Key>
+          <Property Name="mintrackingid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tenderid" Type="int" />
+          <Property Name="ipaddress" Type="varchar" MaxLength="100" />
+          <Property Name="clientid" Type="int" />
+          <Property Name="Addmin" Type="int" />
+          <Property Name="EntryDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BidMethodMaster">
+          <Key>
+            <PropertyRef Name="Methodid" />
+          </Key>
+          <Property Name="Methodid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MethodName" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Bids">
+          <Key>
+            <PropertyRef Name="bidid" />
+          </Key>
+          <Property Name="bidid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="itemid" Type="int" />
+          <Property Name="Clientid" Type="int" />
+          <Property Name="BiddateTime" Type="datetime" />
+          <Property Name="BidPrice" Type="int" />
+          <Property Name="ipaddress" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="CategoryMaster">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="CompanyName" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="CurrencyMaster">
+          <Key>
+            <PropertyRef Name="currencyid" />
+          </Key>
+          <Property Name="currencyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="currency" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="ItemTypeMaster">
+          <Key>
+            <PropertyRef Name="Typeid" />
+          </Key>
+          <Property Name="Typeid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="typename" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="LoginMaster">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegisterId" Type="int" />
+          <Property Name="StatusId" Type="int" />
+          <Property Name="LastLogin" Type="datetime" />
+          <Property Name="LoginIP" Type="varchar(max)" />
+          <Property Name="clientpassword" Type="varbinary(max)" />
+          <Property Name="randompassword" Type="varchar" MaxLength="10" />
+          <Property Name="Defaultpass" Type="int" />
+        </EntityType>
+        <EntityType Name="MinPeriod">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TimePeriod" Type="varchar(max)" />
+          <Property Name="Value" Type="time" Precision="7" />
+          <Property Name="mins" Type="int" />
+        </EntityType>
+        <EntityType Name="Notifications">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tenderid" Type="int" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="NotifyDateTime" Type="datetime" />
+          <Property Name="NotifyText" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="RegisterMaster">
+          <Key>
+            <PropertyRef Name="RegisterId" />
+          </Key>
+          <Property Name="RegisterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="RegisterRole" Type="int" />
+          <Property Name="CompanyName" Type="varchar(max)" Nullable="false" />
+          <Property Name="ContactPerson" Type="varchar(max)" Nullable="false" />
+          <Property Name="RegAddress" Type="varchar(max)" Nullable="false" />
+          <Property Name="City" Type="varchar(max)" Nullable="false" />
+          <Property Name="pincode" Type="int" Nullable="false" />
+          <Property Name="StateId" Type="int" />
+          <Property Name="Email" Type="varchar(max)" Nullable="false" />
+          <Property Name="Mobile" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Telephone" Type="varchar" MaxLength="15" />
+          <Property Name="PanNo" Type="varchar" MaxLength="10" />
+          <Property Name="Tin" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Rolemaster">
+          <Key>
+            <PropertyRef Name="roleid" />
+          </Key>
+          <Property Name="roleid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rolename" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="StateMaster">
+          <Key>
+            <PropertyRef Name="stateId" />
+          </Key>
+          <Property Name="stateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatusMaster">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tenderid" Type="int" />
+          <Property Name="CompanyId" Type="int" />
+          <Property Name="SupplierStatus" Type="int" />
+          <Property Name="EGuid" Type="varchar(max)" />
+          <Property Name="fictitious_name" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Tender">
+          <Key>
+            <PropertyRef Name="TenderId" />
+          </Key>
+          <Property Name="TenderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="Attachment" Type="varchar(max)" />
+          <Property Name="TenderDesc" Type="varchar(max)" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="StartTime" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Enddate" Type="date" />
+          <Property Name="Endtime" Type="varchar" MaxLength="10" />
+          <Property Name="TimePeriod" Type="int" />
+          <Property Name="Company" Type="int" />
+          <Property Name="Tstatus" Type="int" />
+          <Property Name="terms" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="TenderItem">
+          <Key>
+            <PropertyRef Name="itemid" />
+          </Key>
+          <Property Name="itemid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tenderid" Type="int" />
+          <Property Name="ItemType" Type="int" />
+          <Property Name="ItemName" Type="varchar(max)" />
+          <Property Name="ItemDesc" Type="varchar(max)" />
+          <Property Name="ItemCategory" Type="int" />
+          <Property Name="Location" Type="varchar(max)" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="UOM" Type="int" Nullable="false" />
+          <Property Name="Price" Type="int" />
+          <Property Name="Currency" Type="int" Nullable="false" />
+          <Property Name="FloorPrice" Type="int" />
+          <Property Name="BidMethod" Type="int" Nullable="false" />
+          <Property Name="ReducePerBid" Type="int" />
+          <Property Name="Remarks" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Tracking">
+          <Key>
+            <PropertyRef Name="Trackid" />
+          </Key>
+          <Property Name="Trackid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tenderid" Type="int" />
+          <Property Name="Decisionby" Type="int" />
+          <Property Name="Decisionon" Type="datetime" />
+          <Property Name="TrackStatus" Type="int" />
+          <Property Name="Remarks" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="UOMMaster">
+          <Key>
+            <PropertyRef Name="UOMid" />
+          </Key>
+          <Property Name="UOMid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UOM" Type="varchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ebid.dbo.get_v_tender_date' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="get_v_tender_date">
+          <Key>
+            <PropertyRef Name="tenderid" />
+          </Key>
+          <Property Name="tenderid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StartDateTime" Type="datetime" />
+          <Property Name="EndDateTime" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ebid.dbo.v_bidmin_record' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_bidmin_record">
+          <Key>
+            <PropertyRef Name="bidid" />
+          </Key>
+          <Property Name="bidid" Type="int" Nullable="false" />
+          <Property Name="itemid" Type="int" />
+          <Property Name="clientid" Type="int" />
+          <Property Name="bidprice" Type="int" />
+        </EntityType>
+        <Association Name="abc">
+          <End Role="CategoryMaster" Type="Self.CategoryMaster" Multiplicity="1" />
+          <End Role="RegisterMaster" Type="Self.RegisterMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryMaster">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="RegisterMaster">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bids__Clientid__59063A47">
+          <End Role="LoginMaster" Type="Self.LoginMaster" Multiplicity="0..1" />
+          <End Role="Bids" Type="Self.Bids" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoginMaster">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Bids">
+              <PropertyRef Name="Clientid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bids__itemid__5812160E">
+          <End Role="TenderItem" Type="Self.TenderItem" Multiplicity="0..1" />
+          <End Role="Bids" Type="Self.Bids" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TenderItem">
+              <PropertyRef Name="itemid" />
+            </Principal>
+            <Dependent Role="Bids">
+              <PropertyRef Name="itemid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__company__ClientI__32E0915F">
+          <End Role="LoginMaster" Type="Self.LoginMaster" Multiplicity="0..1" />
+          <End Role="company" Type="Self.company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoginMaster">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="company">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LoginMast__Regis__33D4B598">
+          <End Role="RegisterMaster" Type="Self.RegisterMaster" Multiplicity="0..1" />
+          <End Role="LoginMaster" Type="Self.LoginMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegisterMaster">
+              <PropertyRef Name="RegisterId" />
+            </Principal>
+            <Dependent Role="LoginMaster">
+              <PropertyRef Name="RegisterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LoginMast__Statu__34C8D9D1">
+          <End Role="StatusMaster" Type="Self.StatusMaster" Multiplicity="0..1" />
+          <End Role="LoginMaster" Type="Self.LoginMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusMaster">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="LoginMaster">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notificat__Clien__6754599E">
+          <End Role="LoginMaster" Type="Self.LoginMaster" Multiplicity="0..1" />
+          <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoginMaster">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Notifications">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notificat__Tende__66603565">
+          <End Role="Tender" Type="Self.Tender" Multiplicity="0..1" />
+          <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tender">
+              <PropertyRef Name="TenderId" />
+            </Principal>
+            <Dependent Role="Notifications">
+              <PropertyRef Name="Tenderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RegisterM__State__36B12243">
+          <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="0..1" />
+          <End Role="RegisterMaster" Type="Self.RegisterMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateMaster">
+              <PropertyRef Name="stateId" />
+            </Principal>
+            <Dependent Role="RegisterMaster">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Supplier__Compan__37A5467C">
+          <End Role="company" Type="Self.company" Multiplicity="0..1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Supplier__Suppli__6D0D32F4">
+          <End Role="StatusMaster" Type="Self.StatusMaster" Multiplicity="0..1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusMaster">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="SupplierStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Supplier__Tender__38996AB5">
+          <End Role="Tender" Type="Self.Tender" Multiplicity="0..1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tender">
+              <PropertyRef Name="TenderId" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="Tenderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tender__ClientId__398D8EEE">
+          <End Role="LoginMaster" Type="Self.LoginMaster" Multiplicity="0..1" />
+          <End Role="Tender" Type="Self.Tender" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoginMaster">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Tender">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tender__Company__3A81B327">
+          <End Role="company" Type="Self.company" Multiplicity="0..1" />
+          <End Role="Tender" Type="Self.Tender" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Tender">
+              <PropertyRef Name="Company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tender__Tstatus__3B75D760">
+          <End Role="StatusMaster" Type="Self.StatusMaster" Multiplicity="0..1" />
+          <End Role="Tender" Type="Self.Tender" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusMaster">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="Tender">
+              <PropertyRef Name="Tstatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TenderIte__BidMe__3D5E1FD2">
+          <End Role="BidMethodMaster" Type="Self.BidMethodMaster" Multiplicity="1" />
+          <End Role="TenderItem" Type="Self.TenderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BidMethodMaster">
+              <PropertyRef Name="Methodid" />
+            </Principal>
+            <Dependent Role="TenderItem">
+              <PropertyRef Name="BidMethod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TenderIte__Curre__3E52440B">
+          <End Role="CurrencyMaster" Type="Self.CurrencyMaster" Multiplicity="1" />
+          <End Role="TenderItem" Type="Self.TenderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyMaster">
+              <PropertyRef Name="currencyid" />
+            </Principal>
+            <Dependent Role="TenderItem">
+              <PropertyRef Name="Currency" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TenderIte__ItemC__3F466844">
+          <End Role="CategoryMaster" Type="Self.CategoryMaster" Multiplicity="0..1" />
+          <End Role="TenderItem" Type="Self.TenderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryMaster">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="TenderItem">
+              <PropertyRef Name="ItemCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TenderIte__ItemT__403A8C7D">
+          <End Role="ItemTypeMaster" Type="Self.ItemTypeMaster" Multiplicity="0..1" />
+          <End Role="TenderItem" Type="Self.TenderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemTypeMaster">
+              <PropertyRef Name="Typeid" />
+            </Principal>
+            <Dependent Role="TenderItem">
+              <PropertyRef Name="ItemType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TenderIte__Tende__412EB0B6">
+          <End Role="Tender" Type="Self.Tender" Multiplicity="0..1" />
+          <End Role="TenderItem" Type="Self.TenderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tender">
+              <PropertyRef Name="TenderId" />
+            </Principal>
+            <Dependent Role="TenderItem">
+              <PropertyRef Name="Tenderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TenderItem__UOM__4222D4EF">
+          <End Role="UOMMaster" Type="Self.UOMMaster" Multiplicity="1" />
+          <End Role="TenderItem" Type="Self.TenderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UOMMaster">
+              <PropertyRef Name="UOMid" />
+            </Principal>
+            <Dependent Role="TenderItem">
+              <PropertyRef Name="UOM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tracking__Decisi__778AC167">
+          <End Role="LoginMaster" Type="Self.LoginMaster" Multiplicity="0..1" />
+          <End Role="Tracking" Type="Self.Tracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoginMaster">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Tracking">
+              <PropertyRef Name="Decisionby" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tracking__Tender__76969D2E">
+          <End Role="Tender" Type="Self.Tender" Multiplicity="0..1" />
+          <End Role="Tracking" Type="Self.Tracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tender">
+              <PropertyRef Name="TenderId" />
+            </Principal>
+            <Dependent Role="Tracking">
+              <PropertyRef Name="Tenderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tracking__TrackS__787EE5A0">
+          <End Role="StatusMaster" Type="Self.StatusMaster" Multiplicity="0..1" />
+          <End Role="Tracking" Type="Self.Tracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusMaster">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="Tracking">
+              <PropertyRef Name="TrackStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tender_minperiod">
+          <End Role="MinPeriod" Type="Self.MinPeriod" Multiplicity="0..1" />
+          <End Role="Tender" Type="Self.Tender" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MinPeriod">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Tender">
+              <PropertyRef Name="TimePeriod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reg_role">
+          <End Role="Rolemaster" Type="Self.Rolemaster" Multiplicity="0..1" />
+          <End Role="RegisterMaster" Type="Self.RegisterMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rolemaster">
+              <PropertyRef Name="roleid" />
+            </Principal>
+            <Dependent Role="RegisterMaster">
+              <PropertyRef Name="RegisterRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Add_Bid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="itemid" Type="int" Mode="In" />
+          <Parameter Name="client" Type="int" Mode="In" />
+          <Parameter Name="price" Type="int" Mode="In" />
+          <Parameter Name="ip" Type="varchar" Mode="In" />
+          <Parameter Name="bidunit" Type="int" Mode="In" />
+        </Function>
+        <Function Name="add_min" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+          <Parameter Name="min" Type="int" Mode="In" />
+          <Parameter Name="Clientid" Type="int" Mode="In" />
+          <Parameter Name="IpAddress" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Add_notify" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+          <Parameter Name="client" Type="int" Mode="In" />
+          <Parameter Name="text" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="AddTerms" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+          <Parameter Name="terms" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="ChangePassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Clientid" Type="int" Mode="In" />
+          <Parameter Name="PASSWORD" Type="varchar(max)" Mode="In" />
+          <Parameter Name="DefaultPass" Type="int" Mode="In" />
+        </Function>
+        <Function Name="check_SupplierAcceptance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+          <Parameter Name="clientid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="check_tendertime" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="itemid" Type="int" Mode="In" />
+          <Parameter Name="client" Type="int" Mode="In" />
+        </Function>
+        <Function Name="checkdefault" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="clientid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="checklogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="clientid" Type="int" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="del_supplier" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="companyid" Type="int" Mode="In" />
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Item" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="itemid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="file_upload" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="file" Type="varchar(max)" Mode="In" />
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_AddedSupplier" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_Bid_detail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+          <Parameter Name="client" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_Bid_detail1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+          <Parameter Name="client" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_company" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="text" Type="varchar(max)" Mode="In" />
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_item_detail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+          <Parameter Name="Client" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_live_auction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="client" Type="int" Mode="In" />
+          <Parameter Name="status" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="get_notify" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+          <Parameter Name="client" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_ReduceBidPrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="itemid" Type="int" Mode="In" />
+          <Parameter Name="price" Type="int" Mode="In" />
+          <Parameter Name="bidunit" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_role" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="client" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_role1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="client" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_supplierlist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_tender_detail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tender" Type="int" Mode="In" />
+          <Parameter Name="client" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_Tracking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getemail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="client" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getitemslist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getsuppstatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+          <Parameter Name="clientid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetTerms" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Register" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="category" Type="int" Mode="In" />
+          <Parameter Name="role" Type="varchar" Mode="In" />
+          <Parameter Name="company" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Address" Type="varchar(max)" Mode="In" />
+          <Parameter Name="city" Type="varchar(max)" Mode="In" />
+          <Parameter Name="state" Type="int" Mode="In" />
+          <Parameter Name="pincode" Type="int" Mode="In" />
+          <Parameter Name="pan" Type="varchar" Mode="In" />
+          <Parameter Name="Person" Type="varchar(max)" Mode="In" />
+          <Parameter Name="email" Type="varchar(max)" Mode="In" />
+          <Parameter Name="mobile" Type="varchar" Mode="In" />
+          <Parameter Name="Telephone" Type="varchar" Mode="In" />
+          <Parameter Name="tin" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="resettender" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Save_Bid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="itemid" Type="int" Mode="In" />
+          <Parameter Name="client" Type="int" Mode="In" />
+          <Parameter Name="price" Type="int" Mode="In" />
+        </Function>
+        <Function Name="save_item" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="itemid" Type="int" Mode="In" />
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+          <Parameter Name="itemtype" Type="int" Mode="In" />
+          <Parameter Name="itemname" Type="varchar(max)" Mode="In" />
+          <Parameter Name="desc" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Category" Type="int" Mode="In" />
+          <Parameter Name="location" Type="varchar(max)" Mode="In" />
+          <Parameter Name="quantity" Type="int" Mode="In" />
+          <Parameter Name="UOM" Type="int" Mode="In" />
+          <Parameter Name="price" Type="int" Mode="In" />
+          <Parameter Name="currency" Type="int" Mode="In" />
+          <Parameter Name="method" Type="int" Mode="In" />
+          <Parameter Name="reduce" Type="int" Mode="In" />
+          <Parameter Name="remarks" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="save_supplier" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="companyid" Type="int" Mode="In" />
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+          <Parameter Name="guid" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="save_tender" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Tenderid" Type="int" Mode="In" />
+          <Parameter Name="ClientId" Type="int" Mode="In" />
+          <Parameter Name="TenderDesc" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Filename" Type="varchar(max)" Mode="In" />
+          <Parameter Name="startdate" Type="datetime" Mode="In" />
+          <Parameter Name="StartTime" Type="varchar" Mode="In" />
+          <Parameter Name="TimePeriodId" Type="int" Mode="In" />
+          <Parameter Name="Company" Type="int" Mode="In" />
+          <Parameter Name="status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sendPasswordMail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Clientid" Type="int" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="Flag" Type="char" Mode="In" />
+          <Parameter Name="profile_name" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Tender_approve" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="tenderitemreport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="itemid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="tenderitemreport_biddetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="itemid" Type="int" Mode="In" />
+          <Parameter Name="tableHTML" Type="varchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="tenderitemreport_headerdetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="itemid" Type="int" Mode="In" />
+          <Parameter Name="tableHTML" Type="varchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="tenderitemreport_print" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="update_SupplierAcceptance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+          <Parameter Name="status" Type="varchar(max)" Mode="In" />
+          <Parameter Name="clientid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="update_tenderStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+          <Parameter Name="status" Type="varchar(max)" Mode="In" />
+          <Parameter Name="clientid" Type="int" Mode="In" />
+          <Parameter Name="remarks" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="update_tenderStatus1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+          <Parameter Name="status" Type="varchar(max)" Mode="In" />
+          <Parameter Name="clientid" Type="int" Mode="In" />
+          <Parameter Name="remarks" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="updateTracking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tenderid" Type="int" Mode="In" />
+          <Parameter Name="client" Type="int" Mode="In" />
+          <Parameter Name="status" Type="varchar(max)" Mode="In" />
+          <Parameter Name="remarks" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="ValidateGUID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="guid" Type="varchar(max)" Mode="In" />
+        </Function>
+        <EntityContainer Name="ebidModelStoreContainer">
+          <EntitySet Name="addmintracking" EntityType="Self.addmintracking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BidMethodMaster" EntityType="Self.BidMethodMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bids" EntityType="Self.Bids" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryMaster" EntityType="Self.CategoryMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="company" EntityType="Self.company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CurrencyMaster" EntityType="Self.CurrencyMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemTypeMaster" EntityType="Self.ItemTypeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoginMaster" EntityType="Self.LoginMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MinPeriod" EntityType="Self.MinPeriod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegisterMaster" EntityType="Self.RegisterMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rolemaster" EntityType="Self.Rolemaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StateMaster" EntityType="Self.StateMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusMaster" EntityType="Self.StatusMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tender" EntityType="Self.Tender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TenderItem" EntityType="Self.TenderItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tracking" EntityType="Self.Tracking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UOMMaster" EntityType="Self.UOMMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="get_v_tender_date" EntityType="Self.get_v_tender_date" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [get_v_tender_date].[tenderid] AS [tenderid], 
+    [get_v_tender_date].[StartDateTime] AS [StartDateTime], 
+    [get_v_tender_date].[EndDateTime] AS [EndDateTime]
+    FROM [dbo].[get_v_tender_date] AS [get_v_tender_date]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_bidmin_record" EntityType="Self.v_bidmin_record" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_bidmin_record].[bidid] AS [bidid], 
+    [v_bidmin_record].[itemid] AS [itemid], 
+    [v_bidmin_record].[clientid] AS [clientid], 
+    [v_bidmin_record].[bidprice] AS [bidprice]
+    FROM [dbo].[v_bidmin_record] AS [v_bidmin_record]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="abc" Association="Self.abc">
+            <End Role="CategoryMaster" EntitySet="CategoryMaster" />
+            <End Role="RegisterMaster" EntitySet="RegisterMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bids__Clientid__59063A47" Association="Self.FK__Bids__Clientid__59063A47">
+            <End Role="LoginMaster" EntitySet="LoginMaster" />
+            <End Role="Bids" EntitySet="Bids" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bids__itemid__5812160E" Association="Self.FK__Bids__itemid__5812160E">
+            <End Role="TenderItem" EntitySet="TenderItem" />
+            <End Role="Bids" EntitySet="Bids" />
+          </AssociationSet>
+          <AssociationSet Name="FK__company__ClientI__32E0915F" Association="Self.FK__company__ClientI__32E0915F">
+            <End Role="LoginMaster" EntitySet="LoginMaster" />
+            <End Role="company" EntitySet="company" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LoginMast__Regis__33D4B598" Association="Self.FK__LoginMast__Regis__33D4B598">
+            <End Role="RegisterMaster" EntitySet="RegisterMaster" />
+            <End Role="LoginMaster" EntitySet="LoginMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LoginMast__Statu__34C8D9D1" Association="Self.FK__LoginMast__Statu__34C8D9D1">
+            <End Role="StatusMaster" EntitySet="StatusMaster" />
+            <End Role="LoginMaster" EntitySet="LoginMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notificat__Clien__6754599E" Association="Self.FK__Notificat__Clien__6754599E">
+            <End Role="LoginMaster" EntitySet="LoginMaster" />
+            <End Role="Notifications" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notificat__Tende__66603565" Association="Self.FK__Notificat__Tende__66603565">
+            <End Role="Tender" EntitySet="Tender" />
+            <End Role="Notifications" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RegisterM__State__36B12243" Association="Self.FK__RegisterM__State__36B12243">
+            <End Role="StateMaster" EntitySet="StateMaster" />
+            <End Role="RegisterMaster" EntitySet="RegisterMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Supplier__Compan__37A5467C" Association="Self.FK__Supplier__Compan__37A5467C">
+            <End Role="company" EntitySet="company" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Supplier__Suppli__6D0D32F4" Association="Self.FK__Supplier__Suppli__6D0D32F4">
+            <End Role="StatusMaster" EntitySet="StatusMaster" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Supplier__Tender__38996AB5" Association="Self.FK__Supplier__Tender__38996AB5">
+            <End Role="Tender" EntitySet="Tender" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tender__ClientId__398D8EEE" Association="Self.FK__Tender__ClientId__398D8EEE">
+            <End Role="LoginMaster" EntitySet="LoginMaster" />
+            <End Role="Tender" EntitySet="Tender" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tender__Company__3A81B327" Association="Self.FK__Tender__Company__3A81B327">
+            <End Role="company" EntitySet="company" />
+            <End Role="Tender" EntitySet="Tender" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tender__Tstatus__3B75D760" Association="Self.FK__Tender__Tstatus__3B75D760">
+            <End Role="StatusMaster" EntitySet="StatusMaster" />
+            <End Role="Tender" EntitySet="Tender" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TenderIte__BidMe__3D5E1FD2" Association="Self.FK__TenderIte__BidMe__3D5E1FD2">
+            <End Role="BidMethodMaster" EntitySet="BidMethodMaster" />
+            <End Role="TenderItem" EntitySet="TenderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TenderIte__Curre__3E52440B" Association="Self.FK__TenderIte__Curre__3E52440B">
+            <End Role="CurrencyMaster" EntitySet="CurrencyMaster" />
+            <End Role="TenderItem" EntitySet="TenderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TenderIte__ItemC__3F466844" Association="Self.FK__TenderIte__ItemC__3F466844">
+            <End Role="CategoryMaster" EntitySet="CategoryMaster" />
+            <End Role="TenderItem" EntitySet="TenderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TenderIte__ItemT__403A8C7D" Association="Self.FK__TenderIte__ItemT__403A8C7D">
+            <End Role="ItemTypeMaster" EntitySet="ItemTypeMaster" />
+            <End Role="TenderItem" EntitySet="TenderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TenderIte__Tende__412EB0B6" Association="Self.FK__TenderIte__Tende__412EB0B6">
+            <End Role="Tender" EntitySet="Tender" />
+            <End Role="TenderItem" EntitySet="TenderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TenderItem__UOM__4222D4EF" Association="Self.FK__TenderItem__UOM__4222D4EF">
+            <End Role="UOMMaster" EntitySet="UOMMaster" />
+            <End Role="TenderItem" EntitySet="TenderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tracking__Decisi__778AC167" Association="Self.FK__Tracking__Decisi__778AC167">
+            <End Role="LoginMaster" EntitySet="LoginMaster" />
+            <End Role="Tracking" EntitySet="Tracking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tracking__Tender__76969D2E" Association="Self.FK__Tracking__Tender__76969D2E">
+            <End Role="Tender" EntitySet="Tender" />
+            <End Role="Tracking" EntitySet="Tracking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tracking__TrackS__787EE5A0" Association="Self.FK__Tracking__TrackS__787EE5A0">
+            <End Role="StatusMaster" EntitySet="StatusMaster" />
+            <End Role="Tracking" EntitySet="Tracking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tender_minperiod" Association="Self.FK_Tender_minperiod">
+            <End Role="MinPeriod" EntitySet="MinPeriod" />
+            <End Role="Tender" EntitySet="Tender" />
+          </AssociationSet>
+          <AssociationSet Name="reg_role" Association="Self.reg_role">
+            <End Role="Rolemaster" EntitySet="Rolemaster" />
+            <End Role="RegisterMaster" EntitySet="RegisterMaster" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ebidModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="checklogin" ReturnType="Collection(Int32)">
+            <Parameter Name="clientid" Mode="In" Type="Int32" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="del_supplier">
+            <Parameter Name="companyid" Mode="In" Type="Int32" />
+            <Parameter Name="tenderid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_company" ReturnType="Collection(ebidModel.get_company_Result)">
+            <Parameter Name="text" Mode="In" Type="String" />
+            <Parameter Name="tenderid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_supplierlist" ReturnType="Collection(ebidModel.get_supplierlist_Result)">
+          <Parameter Name="tenderid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getitemslist" ReturnType="Collection(ebidModel.getitemslist_Result)">
+          <Parameter Name="tenderid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Register">
+            <Parameter Name="category" Mode="In" Type="Int32" />
+            <Parameter Name="role" Mode="In" Type="String" />
+            <Parameter Name="company" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="state" Mode="In" Type="Int32" />
+            <Parameter Name="pincode" Mode="In" Type="Int32" />
+            <Parameter Name="pan" Mode="In" Type="String" />
+            <Parameter Name="Person" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="mobile" Mode="In" Type="String" />
+            <Parameter Name="Telephone" Mode="In" Type="String" />
+            <Parameter Name="tin" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="save_item">
+            <Parameter Name="itemid" Mode="In" Type="Int32" />
+            <Parameter Name="tenderid" Mode="In" Type="Int32" />
+            <Parameter Name="itemtype" Mode="In" Type="Int32" />
+            <Parameter Name="itemname" Mode="In" Type="String" />
+            <Parameter Name="desc" Mode="In" Type="String" />
+            <Parameter Name="Category" Mode="In" Type="Int32" />
+            <Parameter Name="location" Mode="In" Type="String" />
+            <Parameter Name="quantity" Mode="In" Type="Int32" />
+            <Parameter Name="UOM" Mode="In" Type="Int32" />
+            <Parameter Name="price" Mode="In" Type="Int32" />
+            <Parameter Name="currency" Mode="In" Type="Int32" />
+            <Parameter Name="method" Mode="In" Type="Int32" />
+            <Parameter Name="reduce" Mode="In" Type="Int32" />
+            <Parameter Name="remarks" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="save_supplier">
+            <Parameter Name="companyid" Mode="In" Type="Int32" />
+            <Parameter Name="tenderid" Mode="In" Type="Int32" />
+            <Parameter Name="guid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="save_tender" ReturnType="Collection(Int32)">
+            <Parameter Name="Tenderid" Mode="In" Type="Int32" />
+            <Parameter Name="ClientId" Mode="In" Type="Int32" />
+            <Parameter Name="TenderDesc" Mode="In" Type="String" />
+            <Parameter Name="Filename" Mode="In" Type="String" />
+            <Parameter Name="startdate" Mode="In" Type="DateTime" />
+            <Parameter Name="StartTime" Mode="In" Type="String" />
+            <Parameter Name="TimePeriodId" Mode="In" Type="Int32" />
+            <Parameter Name="Company" Mode="In" Type="Int32" />
+            <Parameter Name="status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_live_auction" ReturnType="Collection(ebidModel.get_live_auction_Result)">
+            <Parameter Name="client" Mode="In" Type="Int32" />
+            <Parameter Name="status" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="get_tender_detail" ReturnType="Collection(ebidModel.get_tender_detail_Result)">
+            <Parameter Name="tender" Mode="In" Type="Int32" />
+            <Parameter Name="client" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_item_detail" ReturnType="Collection(ebidModel.get_item_detail_Result)">
+            <Parameter Name="tenderid" Mode="In" Type="Int32" />
+            <Parameter Name="Client" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_Bid_detail" ReturnType="Collection(ebidModel.get_Bid_detail_Result)">
+            <Parameter Name="tenderid" Mode="In" Type="Int32" />
+            <Parameter Name="client" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Add_Bid" ReturnType="Collection(Int32)">
+            <Parameter Name="itemid" Mode="In" Type="Int32" />
+            <Parameter Name="client" Mode="In" Type="Int32" />
+            <Parameter Name="price" Mode="In" Type="Int32" />
+            <Parameter Name="ip" Mode="In" Type="String" />
+            <Parameter Name="bidunit" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_ReduceBidPrice" ReturnType="Collection(ebidModel.get_ReduceBidPrice_Result)">
+            <Parameter Name="itemid" Mode="In" Type="Int32" />
+            <Parameter Name="price" Mode="In" Type="Int32" />
+            <Parameter Name="bidunit" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Item">
+          <Parameter Name="itemid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_role" ReturnType="Collection(ebidModel.get_role1_Result)">
+          <Parameter Name="client" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="file_upload">
+            <Parameter Name="file" Mode="In" Type="String" />
+            <Parameter Name="tenderid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Tender_approve">
+          <Parameter Name="tenderid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="add_min">
+            <Parameter Name="tenderid" Mode="In" Type="Int32" />
+            <Parameter Name="min" Mode="In" Type="Int32" />
+            <Parameter Name="Clientid" Mode="In" Type="Int32" />
+            <Parameter Name="IpAddress" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Add_notify">
+            <Parameter Name="tenderid" Mode="In" Type="Int32" />
+            <Parameter Name="client" Mode="In" Type="Int32" />
+            <Parameter Name="text" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="get_notify" ReturnType="Collection(ebidModel.get_notify_Result)">
+            <Parameter Name="tenderid" Mode="In" Type="Int32" />
+            <Parameter Name="client" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="check_tendertime" ReturnType="Collection(Int32)">
+            <Parameter Name="itemid" Mode="In" Type="Int32" />
+            <Parameter Name="client" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_AddedSupplier" ReturnType="Collection(ebidModel.Get_AddedSupplier_Result)">
+          <Parameter Name="tenderid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="update_tenderStatus">
+            <Parameter Name="tenderid" Mode="In" Type="Int32" />
+            <Parameter Name="status" Mode="In" Type="String" />
+            <Parameter Name="clientid" Mode="In" Type="Int32" />
+            <Parameter Name="remarks" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="check_SupplierAcceptance" ReturnType="Collection(Int32)">
+            <Parameter Name="tenderid" Mode="In" Type="Int32" />
+            <Parameter Name="clientid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="update_SupplierAcceptance">
+            <Parameter Name="tenderid" Mode="In" Type="Int32" />
+            <Parameter Name="status" Mode="In" Type="String" />
+            <Parameter Name="clientid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ValidateGUID" ReturnType="Collection(ebidModel.ValidateGUID_Result)">
+          <Parameter Name="guid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="get_role1" ReturnType="Collection(ebidModel.get_role1_Result)">
+          <Parameter Name="client" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="updateTracking">
+            <Parameter Name="tenderid" Mode="In" Type="Int32" />
+            <Parameter Name="client" Mode="In" Type="Int32" />
+            <Parameter Name="status" Mode="In" Type="String" />
+            <Parameter Name="remarks" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="update_tenderStatus1">
+            <Parameter Name="tenderid" Mode="In" Type="Int32" />
+            <Parameter Name="status" Mode="In" Type="String" />
+            <Parameter Name="clientid" Mode="In" Type="Int32" />
+            <Parameter Name="remarks" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Save_Bid" ReturnType="Collection(Int32)">
+            <Parameter Name="itemid" Mode="In" Type="Int32" />
+            <Parameter Name="client" Mode="In" Type="Int32" />
+            <Parameter Name="price" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_Tracking" ReturnType="Collection(ebidModel.get_Tracking_Result)">
+          <Parameter Name="tenderid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_Bid_detail1" ReturnType="Collection(ebidModel.get_Bid_detail1_Result)">
+            <Parameter Name="tenderid" Mode="In" Type="Int32" />
+            <Parameter Name="client" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="tenderitemreport" ReturnType="Collection(ebidModel.tenderitemreport_Result)">
+          <Parameter Name="itemid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="tenderitemreport_biddetail">
+            <Parameter Name="itemid" Mode="In" Type="Int32" />
+            <Parameter Name="tableHTML" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="tenderitemreport_headerdetail">
+            <Parameter Name="itemid" Mode="In" Type="Int32" />
+            <Parameter Name="tableHTML" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="tenderitemreport_print" ReturnType="Collection(String)">
+          <Parameter Name="tenderid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getemail" ReturnType="Collection(ebidModel.getemail_Result)">
+          <Parameter Name="client" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ChangePassword" ReturnType="Collection(String)">
+            <Parameter Name="Clientid" Mode="In" Type="Int32" />
+            <Parameter Name="PASSWORD" Mode="In" Type="String" />
+            <Parameter Name="DefaultPass" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sendPasswordMail" ReturnType="Collection(String)">
+            <Parameter Name="Clientid" Mode="In" Type="Int32" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Flag" Mode="In" Type="String" />
+            <Parameter Name="profile_name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="checkdefault" ReturnType="Collection(Int32)">
+          <Parameter Name="clientid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getsuppstatus" ReturnType="Collection(ebidModel.getsuppstatus_Result)">
+            <Parameter Name="tenderid" Mode="In" Type="Int32" />
+            <Parameter Name="clientid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="BidMethodMasters" EntityType="ebidModel.BidMethodMaster" />
+          <EntitySet Name="Bids" EntityType="ebidModel.Bid" />
+          <EntitySet Name="CategoryMasters" EntityType="ebidModel.CategoryMaster" />
+          <EntitySet Name="companies" EntityType="ebidModel.company" />
+          <EntitySet Name="CurrencyMasters" EntityType="ebidModel.CurrencyMaster" />
+          <EntitySet Name="ItemTypeMasters" EntityType="ebidModel.ItemTypeMaster" />
+          <EntitySet Name="LoginMasters" EntityType="ebidModel.LoginMaster" />
+          <EntitySet Name="MinPeriods" EntityType="ebidModel.MinPeriod" />
+          <EntitySet Name="Notifications" EntityType="ebidModel.Notification" />
+          <EntitySet Name="RegisterMasters" EntityType="ebidModel.RegisterMaster" />
+          <EntitySet Name="Rolemasters" EntityType="ebidModel.Rolemaster" />
+          <EntitySet Name="StateMasters" EntityType="ebidModel.StateMaster" />
+          <EntitySet Name="StatusMasters" EntityType="ebidModel.StatusMaster" />
+          <EntitySet Name="Suppliers" EntityType="ebidModel.Supplier" />
+          <EntitySet Name="Tenders" EntityType="ebidModel.Tender" />
+          <EntitySet Name="TenderItems" EntityType="ebidModel.TenderItem" />
+          <EntitySet Name="Trackings" EntityType="ebidModel.Tracking" />
+          <EntitySet Name="UOMMasters" EntityType="ebidModel.UOMMaster" />
+          <EntitySet Name="get_v_tender_date" EntityType="ebidModel.get_v_tender_date" />
+          <EntitySet Name="v_bidmin_record" EntityType="ebidModel.v_bidmin_record" />
+          <AssociationSet Name="FK__TenderIte__BidMe__3D5E1FD2" Association="ebidModel.FK__TenderIte__BidMe__3D5E1FD2">
+            <End Role="BidMethodMaster" EntitySet="BidMethodMasters" />
+            <End Role="TenderItem" EntitySet="TenderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bids__Clientid__59063A47" Association="ebidModel.FK__Bids__Clientid__59063A47">
+            <End Role="LoginMaster" EntitySet="LoginMasters" />
+            <End Role="Bid" EntitySet="Bids" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bids__itemid__5812160E" Association="ebidModel.FK__Bids__itemid__5812160E">
+            <End Role="TenderItem" EntitySet="TenderItems" />
+            <End Role="Bid" EntitySet="Bids" />
+          </AssociationSet>
+          <AssociationSet Name="abc" Association="ebidModel.abc">
+            <End Role="CategoryMaster" EntitySet="CategoryMasters" />
+            <End Role="RegisterMaster" EntitySet="RegisterMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TenderIte__ItemC__3F466844" Association="ebidModel.FK__TenderIte__ItemC__3F466844">
+            <End Role="CategoryMaster" EntitySet="CategoryMasters" />
+            <End Role="TenderItem" EntitySet="TenderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK__company__ClientI__32E0915F" Association="ebidModel.FK__company__ClientI__32E0915F">
+            <End Role="LoginMaster" EntitySet="LoginMasters" />
+            <End Role="company" EntitySet="companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Supplier__Compan__37A5467C" Association="ebidModel.FK__Supplier__Compan__37A5467C">
+            <End Role="company" EntitySet="companies" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tender__Company__3A81B327" Association="ebidModel.FK__Tender__Company__3A81B327">
+            <End Role="company" EntitySet="companies" />
+            <End Role="Tender" EntitySet="Tenders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TenderIte__Curre__3E52440B" Association="ebidModel.FK__TenderIte__Curre__3E52440B">
+            <End Role="CurrencyMaster" EntitySet="CurrencyMasters" />
+            <End Role="TenderItem" EntitySet="TenderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TenderIte__ItemT__403A8C7D" Association="ebidModel.FK__TenderIte__ItemT__403A8C7D">
+            <End Role="ItemTypeMaster" EntitySet="ItemTypeMasters" />
+            <End Role="TenderItem" EntitySet="TenderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LoginMast__Regis__33D4B598" Association="ebidModel.FK__LoginMast__Regis__33D4B598">
+            <End Role="RegisterMaster" EntitySet="RegisterMasters" />
+            <End Role="LoginMaster" EntitySet="LoginMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LoginMast__Statu__34C8D9D1" Association="ebidModel.FK__LoginMast__Statu__34C8D9D1">
+            <End Role="StatusMaster" EntitySet="StatusMasters" />
+            <End Role="LoginMaster" EntitySet="LoginMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notificat__Clien__6754599E" Association="ebidModel.FK__Notificat__Clien__6754599E">
+            <End Role="LoginMaster" EntitySet="LoginMasters" />
+            <End Role="Notification" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tender__ClientId__398D8EEE" Association="ebidModel.FK__Tender__ClientId__398D8EEE">
+            <End Role="LoginMaster" EntitySet="LoginMasters" />
+            <End Role="Tender" EntitySet="Tenders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tracking__Decisi__778AC167" Association="ebidModel.FK__Tracking__Decisi__778AC167">
+            <End Role="LoginMaster" EntitySet="LoginMasters" />
+            <End Role="Tracking" EntitySet="Trackings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tender_minperiod" Association="ebidModel.FK_Tender_minperiod">
+            <End Role="MinPeriod" EntitySet="MinPeriods" />
+            <End Role="Tender" EntitySet="Tenders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notificat__Tende__66603565" Association="ebidModel.FK__Notificat__Tende__66603565">
+            <End Role="Tender" EntitySet="Tenders" />
+            <End Role="Notification" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RegisterM__State__36B12243" Association="ebidModel.FK__RegisterM__State__36B12243">
+            <End Role="StateMaster" EntitySet="StateMasters" />
+            <End Role="RegisterMaster" EntitySet="RegisterMasters" />
+          </AssociationSet>
+          <AssociationSet Name="reg_role" Association="ebidModel.reg_role">
+            <End Role="Rolemaster" EntitySet="Rolemasters" />
+            <End Role="RegisterMaster" EntitySet="RegisterMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Supplier__Suppli__6D0D32F4" Association="ebidModel.FK__Supplier__Suppli__6D0D32F4">
+            <End Role="StatusMaster" EntitySet="StatusMasters" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tender__Tstatus__3B75D760" Association="ebidModel.FK__Tender__Tstatus__3B75D760">
+            <End Role="StatusMaster" EntitySet="StatusMasters" />
+            <End Role="Tender" EntitySet="Tenders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tracking__TrackS__787EE5A0" Association="ebidModel.FK__Tracking__TrackS__787EE5A0">
+            <End Role="StatusMaster" EntitySet="StatusMasters" />
+            <End Role="Tracking" EntitySet="Trackings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Supplier__Tender__38996AB5" Association="ebidModel.FK__Supplier__Tender__38996AB5">
+            <End Role="Tender" EntitySet="Tenders" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TenderIte__Tende__412EB0B6" Association="ebidModel.FK__TenderIte__Tende__412EB0B6">
+            <End Role="Tender" EntitySet="Tenders" />
+            <End Role="TenderItem" EntitySet="TenderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tracking__Tender__76969D2E" Association="ebidModel.FK__Tracking__Tender__76969D2E">
+            <End Role="Tender" EntitySet="Tenders" />
+            <End Role="Tracking" EntitySet="Trackings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TenderItem__UOM__4222D4EF" Association="ebidModel.FK__TenderItem__UOM__4222D4EF">
+            <End Role="UOMMaster" EntitySet="UOMMasters" />
+            <End Role="TenderItem" EntitySet="TenderItems" />
+          </AssociationSet>
+          <EntitySet Name="addmintrackings" EntityType="ebidModel.addmintracking" />
+          <FunctionImport Name="getsuppstatus1" ReturnType="Collection(ebidModel.getsuppstatus1_Result)">
+            <Parameter Name="tenderid" Mode="In" Type="Int32" />
+            <Parameter Name="clientid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="resettender">
+          <Parameter Name="tenderid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Save_Bid1">
+            <Parameter Name="itemid" Mode="In" Type="Int32" />
+            <Parameter Name="client" Mode="In" Type="Int32" />
+            <Parameter Name="price" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetTerms" ReturnType="Collection(String)">
+          <Parameter Name="tenderid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AddTerms">
+            <Parameter Name="tenderid" Mode="In" Type="Int32" />
+            <Parameter Name="terms" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="get_company_Result">
+          <Property Type="Int64" Name="srno" Nullable="true" />
+          <Property Type="Int32" Name="CompanyId" Nullable="false" />
+          <Property Type="String" Name="CompanyName" Nullable="true" />
+          <Property Type="String" Name="ContactPerson" Nullable="true" />
+          <Property Type="String" Name="Email" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_supplierlist_Result">
+          <Property Type="Int64" Name="srno" Nullable="true" />
+          <Property Type="Int32" Name="CompanyId" Nullable="true" />
+          <Property Type="Int32" Name="ClientId" Nullable="true" />
+          <Property Type="String" Name="CompanyName" Nullable="true" />
+          <Property Type="Int32" Name="Tenderid" Nullable="true" />
+          <Property Type="String" Name="ContactPerson" Nullable="true" />
+          <Property Type="String" Name="Email" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="getitemslist_Result">
+          <Property Type="Int64" Name="srno" Nullable="true" />
+          <Property Type="Int32" Name="itemid" Nullable="false" />
+          <Property Type="String" Name="ItemName" Nullable="true" />
+          <Property Type="String" Name="ItemDesc" Nullable="true" />
+          <Property Type="Int32" Name="Quantity" Nullable="true" />
+          <Property Type="String" Name="UOM" Nullable="true" />
+          <Property Type="Int32" Name="Price" Nullable="true" />
+          <Property Type="Int32" Name="FloorPrice" Nullable="true" />
+          <Property Type="Int32" Name="ReducePerBid" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_live_auction_Result">
+          <Property Type="Int64" Name="srno" Nullable="true" />
+          <Property Type="Int32" Name="TenderId" Nullable="false" />
+          <Property Type="String" Name="CompanyName" Nullable="true" />
+          <Property Type="String" Name="Tenderdesc" Nullable="true" />
+          <Property Type="String" Name="StartDate" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="StartTime" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="EndDate" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="EndTime" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="rolename" Nullable="true" />
+          <Property Type="String" Name="ContactPerson" Nullable="true" />
+          <Property Type="String" Name="StatusName" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_tender_detail_Result">
+          <Property Type="Int32" Name="TenderId" Nullable="false" />
+          <Property Type="String" Name="Tenderdesc" Nullable="true" />
+          <Property Type="String" Name="contactPerson" Nullable="true" />
+          <Property Type="String" Name="StartDate" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="StartTime" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="EndDate" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="EndTime" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Attachment" Nullable="true" />
+          <Property Type="String" Name="CompanyName" Nullable="true" />
+          <Property Type="String" Name="Currenttime" Nullable="true" MaxLength="61" />
+        </ComplexType>
+        <ComplexType Name="get_item_detail_Result">
+          <Property Type="Int64" Name="srno" Nullable="true" />
+          <Property Type="Int32" Name="itemid" Nullable="false" />
+          <Property Type="String" Name="ItemName" Nullable="true" />
+          <Property Type="String" Name="ItemDesc" Nullable="true" />
+          <Property Type="Int32" Name="Quantity" Nullable="true" />
+          <Property Type="String" Name="UOM" Nullable="true" />
+          <Property Type="Int32" Name="Price" Nullable="true" />
+          <Property Type="Int32" Name="FloorPrice" Nullable="true" />
+          <Property Type="Int32" Name="Bidmethod" Nullable="false" />
+          <Property Type="Int32" Name="ReducePerBid" Nullable="true" />
+          <Property Type="Int32" Name="Leading" Nullable="true" />
+          <Property Type="Int32" Name="BidCount" Nullable="true" />
+          <Property Type="Int32" Name="Biddercount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_Bid_detail_Result">
+          <Property Type="Int32" Name="itemid" Nullable="true" />
+          <Property Type="String" Name="ItemName" Nullable="true" />
+          <Property Type="DateTime" Name="BiddateTime" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="BidPrice" Nullable="true" />
+          <Property Type="Int64" Name="srno" Nullable="true" />
+          <Property Type="String" Name="fictitious_name" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_ReduceBidPrice_Result">
+          <Property Type="Int32" Name="itemid" Nullable="false" />
+          <Property Type="Int32" Name="BidPrice" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_notify_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="Tenderid" Nullable="true" />
+          <Property Type="Int32" Name="ClientId" Nullable="true" />
+          <Property Type="DateTime" Name="NotifyDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="NotifyText" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Get_AddedSupplier_Result">
+          <Property Type="Int64" Name="srno" Nullable="true" />
+          <Property Type="Int32" Name="Tenderid" Nullable="true" />
+          <Property Type="String" Name="CompanyName" Nullable="true" />
+          <Property Type="String" Name="ContactPerson" Nullable="true" />
+          <Property Type="String" Name="City" Nullable="true" />
+          <Property Type="String" Name="Email" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ValidateGUID_Result">
+          <Property Type="Int32" Name="Tenderid" Nullable="true" />
+          <Property Type="Int32" Name="CompanyId" Nullable="true" />
+          <Property Type="Int32" Name="clientid" Nullable="true" />
+          <Property Type="Int32" Name="counts" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_role1_Result">
+          <Property Type="String" Name="rolename" Nullable="true" />
+          <Property Type="String" Name="ContactPerson" Nullable="true" />
+          <Property Type="String" Name="CompanyName" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_Tracking_Result">
+          <Property Type="String" Name="TenderDesc" Nullable="true" />
+          <Property Type="Int32" Name="Decisionby" Nullable="true" />
+          <Property Type="String" Name="ContactPerson" Nullable="true" />
+          <Property Type="DateTime" Name="Decisionon" Nullable="true" Precision="23" />
+          <Property Type="String" Name="StatusName" Nullable="true" />
+          <Property Type="String" Name="Remarks" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_Bid_detail1_Result">
+          <Property Type="Int64" Name="srno" Nullable="true" />
+          <Property Type="Int32" Name="itemid" Nullable="true" />
+          <Property Type="String" Name="ItemName" Nullable="true" />
+          <Property Type="DateTime" Name="BiddateTime" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="BidPrice" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="tenderitemreport_Result">
+          <Property Type="Int32" Name="itemid" Nullable="false" />
+          <Property Type="Int32" Name="tenderid" Nullable="false" />
+          <Property Type="DateTime" Name="enddate" Nullable="true" />
+          <Property Type="String" Name="endtime" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="tenderdesc" Nullable="true" />
+          <Property Type="String" Name="itemdesc" Nullable="true" />
+          <Property Type="String" Name="location" Nullable="true" />
+          <Property Type="String" Name="companyname" Nullable="true" />
+          <Property Type="String" Name="statusname" Nullable="true" />
+          <Property Type="Int32" Name="bidprice" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="getemail_Result">
+          <Property Type="Int32" Name="ClientId" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="getsuppstatus_Result">
+          <Property Type="Int32" Name="clientid" Nullable="true" />
+          <Property Type="Int32" Name="companyid" Nullable="true" />
+          <Property Type="Int32" Name="SupplierStatus" Nullable="false" />
+          <Property Type="String" Name="StatusName" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="BidMethodMaster">
+          <Key>
+            <PropertyRef Name="Methodid" />
+          </Key>
+          <Property Name="Methodid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MethodName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TenderItems" Relationship="ebidModel.FK__TenderIte__BidMe__3D5E1FD2" FromRole="BidMethodMaster" ToRole="TenderItem" />
+        </EntityType>
+        <EntityType Name="Bid">
+          <Key>
+            <PropertyRef Name="bidid" />
+          </Key>
+          <Property Name="bidid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="itemid" Type="Int32" />
+          <Property Name="Clientid" Type="Int32" />
+          <Property Name="BiddateTime" Type="DateTime" Precision="3" />
+          <Property Name="BidPrice" Type="Int32" />
+          <Property Name="ipaddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LoginMaster" Relationship="ebidModel.FK__Bids__Clientid__59063A47" FromRole="Bid" ToRole="LoginMaster" />
+          <NavigationProperty Name="TenderItem" Relationship="ebidModel.FK__Bids__itemid__5812160E" FromRole="Bid" ToRole="TenderItem" />
+        </EntityType>
+        <EntityType Name="CategoryMaster">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RegisterMasters" Relationship="ebidModel.abc" FromRole="CategoryMaster" ToRole="RegisterMaster" />
+          <NavigationProperty Name="TenderItems" Relationship="ebidModel.FK__TenderIte__ItemC__3F466844" FromRole="CategoryMaster" ToRole="TenderItem" />
+        </EntityType>
+        <EntityType Name="company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="CompanyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LoginMaster" Relationship="ebidModel.FK__company__ClientI__32E0915F" FromRole="company" ToRole="LoginMaster" />
+          <NavigationProperty Name="Suppliers" Relationship="ebidModel.FK__Supplier__Compan__37A5467C" FromRole="company" ToRole="Supplier" />
+          <NavigationProperty Name="Tenders" Relationship="ebidModel.FK__Tender__Company__3A81B327" FromRole="company" ToRole="Tender" />
+        </EntityType>
+        <EntityType Name="CurrencyMaster">
+          <Key>
+            <PropertyRef Name="currencyid" />
+          </Key>
+          <Property Name="currencyid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="currency" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TenderItems" Relationship="ebidModel.FK__TenderIte__Curre__3E52440B" FromRole="CurrencyMaster" ToRole="TenderItem" />
+        </EntityType>
+        <EntityType Name="ItemTypeMaster">
+          <Key>
+            <PropertyRef Name="Typeid" />
+          </Key>
+          <Property Name="Typeid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="typename" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TenderItems" Relationship="ebidModel.FK__TenderIte__ItemT__403A8C7D" FromRole="ItemTypeMaster" ToRole="TenderItem" />
+        </EntityType>
+        <EntityType Name="LoginMaster">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegisterId" Type="Int32" />
+          <Property Name="StatusId" Type="Int32" />
+          <Property Name="LastLogin" Type="DateTime" Precision="3" />
+          <Property Name="LoginIP" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="clientpassword" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="randompassword" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Defaultpass" Type="Int32" />
+          <NavigationProperty Name="Bids" Relationship="ebidModel.FK__Bids__Clientid__59063A47" FromRole="LoginMaster" ToRole="Bid" />
+          <NavigationProperty Name="companies" Relationship="ebidModel.FK__company__ClientI__32E0915F" FromRole="LoginMaster" ToRole="company" />
+          <NavigationProperty Name="RegisterMaster" Relationship="ebidModel.FK__LoginMast__Regis__33D4B598" FromRole="LoginMaster" ToRole="RegisterMaster" />
+          <NavigationProperty Name="StatusMaster" Relationship="ebidModel.FK__LoginMast__Statu__34C8D9D1" FromRole="LoginMaster" ToRole="StatusMaster" />
+          <NavigationProperty Name="Notifications" Relationship="ebidModel.FK__Notificat__Clien__6754599E" FromRole="LoginMaster" ToRole="Notification" />
+          <NavigationProperty Name="Tenders" Relationship="ebidModel.FK__Tender__ClientId__398D8EEE" FromRole="LoginMaster" ToRole="Tender" />
+          <NavigationProperty Name="Trackings" Relationship="ebidModel.FK__Tracking__Decisi__778AC167" FromRole="LoginMaster" ToRole="Tracking" />
+        </EntityType>
+        <EntityType Name="MinPeriod">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TimePeriod" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="Time" Precision="7" />
+          <Property Name="mins" Type="Int32" />
+          <NavigationProperty Name="Tenders" Relationship="ebidModel.FK_Tender_minperiod" FromRole="MinPeriod" ToRole="Tender" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tenderid" Type="Int32" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="NotifyDateTime" Type="DateTime" Precision="3" />
+          <Property Name="NotifyText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LoginMaster" Relationship="ebidModel.FK__Notificat__Clien__6754599E" FromRole="Notification" ToRole="LoginMaster" />
+          <NavigationProperty Name="Tender" Relationship="ebidModel.FK__Notificat__Tende__66603565" FromRole="Notification" ToRole="Tender" />
+        </EntityType>
+        <EntityType Name="RegisterMaster">
+          <Key>
+            <PropertyRef Name="RegisterId" />
+          </Key>
+          <Property Name="RegisterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="RegisterRole" Type="Int32" />
+          <Property Name="CompanyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactPerson" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RegAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pincode" Type="Int32" Nullable="false" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telephone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PanNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Tin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CategoryMaster" Relationship="ebidModel.abc" FromRole="RegisterMaster" ToRole="CategoryMaster" />
+          <NavigationProperty Name="LoginMasters" Relationship="ebidModel.FK__LoginMast__Regis__33D4B598" FromRole="RegisterMaster" ToRole="LoginMaster" />
+          <NavigationProperty Name="StateMaster" Relationship="ebidModel.FK__RegisterM__State__36B12243" FromRole="RegisterMaster" ToRole="StateMaster" />
+          <NavigationProperty Name="Rolemaster" Relationship="ebidModel.reg_role" FromRole="RegisterMaster" ToRole="Rolemaster" />
+        </EntityType>
+        <EntityType Name="Rolemaster">
+          <Key>
+            <PropertyRef Name="roleid" />
+          </Key>
+          <Property Name="roleid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rolename" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RegisterMasters" Relationship="ebidModel.reg_role" FromRole="Rolemaster" ToRole="RegisterMaster" />
+        </EntityType>
+        <EntityType Name="StateMaster">
+          <Key>
+            <PropertyRef Name="stateId" />
+          </Key>
+          <Property Name="stateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RegisterMasters" Relationship="ebidModel.FK__RegisterM__State__36B12243" FromRole="StateMaster" ToRole="RegisterMaster" />
+        </EntityType>
+        <EntityType Name="StatusMaster">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LoginMasters" Relationship="ebidModel.FK__LoginMast__Statu__34C8D9D1" FromRole="StatusMaster" ToRole="LoginMaster" />
+          <NavigationProperty Name="Suppliers" Relationship="ebidModel.FK__Supplier__Suppli__6D0D32F4" FromRole="StatusMaster" ToRole="Supplier" />
+          <NavigationProperty Name="Tenders" Relationship="ebidModel.FK__Tender__Tstatus__3B75D760" FromRole="StatusMaster" ToRole="Tender" />
+          <NavigationProperty Name="Trackings" Relationship="ebidModel.FK__Tracking__TrackS__787EE5A0" FromRole="StatusMaster" ToRole="Tracking" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tenderid" Type="Int32" />
+          <Property Name="CompanyId" Type="Int32" />
+          <Property Name="SupplierStatus" Type="Int32" />
+          <Property Name="EGuid" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fictitious_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="company" Relationship="ebidModel.FK__Supplier__Compan__37A5467C" FromRole="Supplier" ToRole="company" />
+          <NavigationProperty Name="StatusMaster" Relationship="ebidModel.FK__Supplier__Suppli__6D0D32F4" FromRole="Supplier" ToRole="StatusMaster" />
+          <NavigationProperty Name="Tender" Relationship="ebidModel.FK__Supplier__Tender__38996AB5" FromRole="Supplier" ToRole="Tender" />
+        </EntityType>
+        <EntityType Name="Tender">
+          <Key>
+            <PropertyRef Name="TenderId" />
+          </Key>
+          <Property Name="TenderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="Attachment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TenderDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="StartTime" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Enddate" Type="DateTime" Precision="0" />
+          <Property Name="Endtime" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TimePeriod" Type="Int32" />
+          <Property Name="Company" Type="Int32" />
+          <Property Name="Tstatus" Type="Int32" />
+          <NavigationProperty Name="company1" Relationship="ebidModel.FK__Tender__Company__3A81B327" FromRole="Tender" ToRole="company" />
+          <NavigationProperty Name="LoginMaster" Relationship="ebidModel.FK__Tender__ClientId__398D8EEE" FromRole="Tender" ToRole="LoginMaster" />
+          <NavigationProperty Name="MinPeriod" Relationship="ebidModel.FK_Tender_minperiod" FromRole="Tender" ToRole="MinPeriod" />
+          <NavigationProperty Name="Notifications" Relationship="ebidModel.FK__Notificat__Tende__66603565" FromRole="Tender" ToRole="Notification" />
+          <NavigationProperty Name="StatusMaster" Relationship="ebidModel.FK__Tender__Tstatus__3B75D760" FromRole="Tender" ToRole="StatusMaster" />
+          <NavigationProperty Name="Suppliers" Relationship="ebidModel.FK__Supplier__Tender__38996AB5" FromRole="Tender" ToRole="Supplier" />
+          <NavigationProperty Name="TenderItems" Relationship="ebidModel.FK__TenderIte__Tende__412EB0B6" FromRole="Tender" ToRole="TenderItem" />
+          <NavigationProperty Name="Trackings" Relationship="ebidModel.FK__Tracking__Tender__76969D2E" FromRole="Tender" ToRole="Tracking" />
+          <Property Name="terms" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TenderItem">
+          <Key>
+            <PropertyRef Name="itemid" />
+          </Key>
+          <Property Name="itemid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tenderid" Type="Int32" />
+          <Property Name="ItemType" Type="Int32" />
+          <Property Name="ItemName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ItemDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ItemCategory" Type="Int32" />
+          <Property Name="Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="UOM" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Currency" Type="Int32" Nullable="false" />
+          <Property Name="FloorPrice" Type="Int32" />
+          <Property Name="BidMethod" Type="Int32" Nullable="false" />
+          <Property Name="ReducePerBid" Type="Int32" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BidMethodMaster" Relationship="ebidModel.FK__TenderIte__BidMe__3D5E1FD2" FromRole="TenderItem" ToRole="BidMethodMaster" />
+          <NavigationProperty Name="Bids" Relationship="ebidModel.FK__Bids__itemid__5812160E" FromRole="TenderItem" ToRole="Bid" />
+          <NavigationProperty Name="CategoryMaster" Relationship="ebidModel.FK__TenderIte__ItemC__3F466844" FromRole="TenderItem" ToRole="CategoryMaster" />
+          <NavigationProperty Name="CurrencyMaster" Relationship="ebidModel.FK__TenderIte__Curre__3E52440B" FromRole="TenderItem" ToRole="CurrencyMaster" />
+          <NavigationProperty Name="ItemTypeMaster" Relationship="ebidModel.FK__TenderIte__ItemT__403A8C7D" FromRole="TenderItem" ToRole="ItemTypeMaster" />
+          <NavigationProperty Name="Tender" Relationship="ebidModel.FK__TenderIte__Tende__412EB0B6" FromRole="TenderItem" ToRole="Tender" />
+          <NavigationProperty Name="UOMMaster" Relationship="ebidModel.FK__TenderItem__UOM__4222D4EF" FromRole="TenderItem" ToRole="UOMMaster" />
+        </EntityType>
+        <EntityType Name="Tracking">
+          <Key>
+            <PropertyRef Name="Trackid" />
+          </Key>
+          <Property Name="Trackid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tenderid" Type="Int32" />
+          <Property Name="Decisionby" Type="Int32" />
+          <Property Name="Decisionon" Type="DateTime" Precision="3" />
+          <Property Name="TrackStatus" Type="Int32" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LoginMaster" Relationship="ebidModel.FK__Tracking__Decisi__778AC167" FromRole="Tracking" ToRole="LoginMaster" />
+          <NavigationProperty Name="StatusMaster" Relationship="ebidModel.FK__Tracking__TrackS__787EE5A0" FromRole="Tracking" ToRole="StatusMaster" />
+          <NavigationProperty Name="Tender" Relationship="ebidModel.FK__Tracking__Tender__76969D2E" FromRole="Tracking" ToRole="Tender" />
+        </EntityType>
+        <EntityType Name="UOMMaster">
+          <Key>
+            <PropertyRef Name="UOMid" />
+          </Key>
+          <Property Name="UOMid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UOM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TenderItems" Relationship="ebidModel.FK__TenderItem__UOM__4222D4EF" FromRole="UOMMaster" ToRole="TenderItem" />
+        </EntityType>
+        <EntityType Name="get_v_tender_date">
+          <Key>
+            <PropertyRef Name="tenderid" />
+          </Key>
+          <Property Name="tenderid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartDateTime" Type="DateTime" Precision="3" />
+          <Property Name="EndDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="v_bidmin_record">
+          <Key>
+            <PropertyRef Name="bidid" />
+          </Key>
+          <Property Name="bidid" Type="Int32" Nullable="false" />
+          <Property Name="itemid" Type="Int32" />
+          <Property Name="clientid" Type="Int32" />
+          <Property Name="bidprice" Type="Int32" />
+        </EntityType>
+        <Association Name="FK__TenderIte__BidMe__3D5E1FD2">
+          <End Type="ebidModel.BidMethodMaster" Role="BidMethodMaster" Multiplicity="1" />
+          <End Type="ebidModel.TenderItem" Role="TenderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BidMethodMaster">
+              <PropertyRef Name="Methodid" />
+            </Principal>
+            <Dependent Role="TenderItem">
+              <PropertyRef Name="BidMethod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bids__Clientid__59063A47">
+          <End Type="ebidModel.LoginMaster" Role="LoginMaster" Multiplicity="0..1" />
+          <End Type="ebidModel.Bid" Role="Bid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoginMaster">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Bid">
+              <PropertyRef Name="Clientid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bids__itemid__5812160E">
+          <End Type="ebidModel.TenderItem" Role="TenderItem" Multiplicity="0..1" />
+          <End Type="ebidModel.Bid" Role="Bid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TenderItem">
+              <PropertyRef Name="itemid" />
+            </Principal>
+            <Dependent Role="Bid">
+              <PropertyRef Name="itemid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="abc">
+          <End Type="ebidModel.CategoryMaster" Role="CategoryMaster" Multiplicity="1" />
+          <End Type="ebidModel.RegisterMaster" Role="RegisterMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryMaster">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="RegisterMaster">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TenderIte__ItemC__3F466844">
+          <End Type="ebidModel.CategoryMaster" Role="CategoryMaster" Multiplicity="0..1" />
+          <End Type="ebidModel.TenderItem" Role="TenderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryMaster">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="TenderItem">
+              <PropertyRef Name="ItemCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__company__ClientI__32E0915F">
+          <End Type="ebidModel.LoginMaster" Role="LoginMaster" Multiplicity="0..1" />
+          <End Type="ebidModel.company" Role="company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoginMaster">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="company">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Supplier__Compan__37A5467C">
+          <End Type="ebidModel.company" Role="company" Multiplicity="0..1" />
+          <End Type="ebidModel.Supplier" Role="Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tender__Company__3A81B327">
+          <End Type="ebidModel.company" Role="company" Multiplicity="0..1" />
+          <End Type="ebidModel.Tender" Role="Tender" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Tender">
+              <PropertyRef Name="Company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TenderIte__Curre__3E52440B">
+          <End Type="ebidModel.CurrencyMaster" Role="CurrencyMaster" Multiplicity="1" />
+          <End Type="ebidModel.TenderItem" Role="TenderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyMaster">
+              <PropertyRef Name="currencyid" />
+            </Principal>
+            <Dependent Role="TenderItem">
+              <PropertyRef Name="Currency" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TenderIte__ItemT__403A8C7D">
+          <End Type="ebidModel.ItemTypeMaster" Role="ItemTypeMaster" Multiplicity="0..1" />
+          <End Type="ebidModel.TenderItem" Role="TenderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemTypeMaster">
+              <PropertyRef Name="Typeid" />
+            </Principal>
+            <Dependent Role="TenderItem">
+              <PropertyRef Name="ItemType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LoginMast__Regis__33D4B598">
+          <End Type="ebidModel.RegisterMaster" Role="RegisterMaster" Multiplicity="0..1" />
+          <End Type="ebidModel.LoginMaster" Role="LoginMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegisterMaster">
+              <PropertyRef Name="RegisterId" />
+            </Principal>
+            <Dependent Role="LoginMaster">
+              <PropertyRef Name="RegisterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LoginMast__Statu__34C8D9D1">
+          <End Type="ebidModel.StatusMaster" Role="StatusMaster" Multiplicity="0..1" />
+          <End Type="ebidModel.LoginMaster" Role="LoginMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusMaster">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="LoginMaster">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notificat__Clien__6754599E">
+          <End Type="ebidModel.LoginMaster" Role="LoginMaster" Multiplicity="0..1" />
+          <End Type="ebidModel.Notification" Role="Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoginMaster">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tender__ClientId__398D8EEE">
+          <End Type="ebidModel.LoginMaster" Role="LoginMaster" Multiplicity="0..1" />
+          <End Type="ebidModel.Tender" Role="Tender" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoginMaster">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Tender">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tracking__Decisi__778AC167">
+          <End Type="ebidModel.LoginMaster" Role="LoginMaster" Multiplicity="0..1" />
+          <End Type="ebidModel.Tracking" Role="Tracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoginMaster">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Tracking">
+              <PropertyRef Name="Decisionby" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tender_minperiod">
+          <End Type="ebidModel.MinPeriod" Role="MinPeriod" Multiplicity="0..1" />
+          <End Type="ebidModel.Tender" Role="Tender" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MinPeriod">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Tender">
+              <PropertyRef Name="TimePeriod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notificat__Tende__66603565">
+          <End Type="ebidModel.Tender" Role="Tender" Multiplicity="0..1" />
+          <End Type="ebidModel.Notification" Role="Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tender">
+              <PropertyRef Name="TenderId" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="Tenderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RegisterM__State__36B12243">
+          <End Type="ebidModel.StateMaster" Role="StateMaster" Multiplicity="0..1" />
+          <End Type="ebidModel.RegisterMaster" Role="RegisterMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateMaster">
+              <PropertyRef Name="stateId" />
+            </Principal>
+            <Dependent Role="RegisterMaster">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reg_role">
+          <End Type="ebidModel.Rolemaster" Role="Rolemaster" Multiplicity="0..1" />
+          <End Type="ebidModel.RegisterMaster" Role="RegisterMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rolemaster">
+              <PropertyRef Name="roleid" />
+            </Principal>
+            <Dependent Role="RegisterMaster">
+              <PropertyRef Name="RegisterRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Supplier__Suppli__6D0D32F4">
+          <End Type="ebidModel.StatusMaster" Role="StatusMaster" Multiplicity="0..1" />
+          <End Type="ebidModel.Supplier" Role="Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusMaster">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="SupplierStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tender__Tstatus__3B75D760">
+          <End Type="ebidModel.StatusMaster" Role="StatusMaster" Multiplicity="0..1" />
+          <End Type="ebidModel.Tender" Role="Tender" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusMaster">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="Tender">
+              <PropertyRef Name="Tstatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tracking__TrackS__787EE5A0">
+          <End Type="ebidModel.StatusMaster" Role="StatusMaster" Multiplicity="0..1" />
+          <End Type="ebidModel.Tracking" Role="Tracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusMaster">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="Tracking">
+              <PropertyRef Name="TrackStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Supplier__Tender__38996AB5">
+          <End Type="ebidModel.Tender" Role="Tender" Multiplicity="0..1" />
+          <End Type="ebidModel.Supplier" Role="Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tender">
+              <PropertyRef Name="TenderId" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="Tenderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TenderIte__Tende__412EB0B6">
+          <End Type="ebidModel.Tender" Role="Tender" Multiplicity="0..1" />
+          <End Type="ebidModel.TenderItem" Role="TenderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tender">
+              <PropertyRef Name="TenderId" />
+            </Principal>
+            <Dependent Role="TenderItem">
+              <PropertyRef Name="Tenderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tracking__Tender__76969D2E">
+          <End Type="ebidModel.Tender" Role="Tender" Multiplicity="0..1" />
+          <End Type="ebidModel.Tracking" Role="Tracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tender">
+              <PropertyRef Name="TenderId" />
+            </Principal>
+            <Dependent Role="Tracking">
+              <PropertyRef Name="Tenderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TenderItem__UOM__4222D4EF">
+          <End Type="ebidModel.UOMMaster" Role="UOMMaster" Multiplicity="1" />
+          <End Type="ebidModel.TenderItem" Role="TenderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UOMMaster">
+              <PropertyRef Name="UOMid" />
+            </Principal>
+            <Dependent Role="TenderItem">
+              <PropertyRef Name="UOM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="addmintracking">
+          <Key>
+            <PropertyRef Name="mintrackingid" />
+          </Key>
+          <Property Name="mintrackingid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tenderid" Type="Int32" />
+          <Property Name="ipaddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="clientid" Type="Int32" />
+          <Property Name="Addmin" Type="Int32" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <ComplexType Name="getsuppstatus1_Result">
+          <Property Type="Int32" Name="clientid" Nullable="true" />
+          <Property Type="Int32" Name="companyid" Nullable="true" />
+          <Property Type="Int32" Name="SupplierStatus" Nullable="false" />
+          <Property Type="String" Name="StatusName" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ebidModelStoreContainer" CdmEntityContainer="Entities">
+          <FunctionImportMapping FunctionImportName="checklogin" FunctionName="ebidModel.Store.checklogin" />
+          <FunctionImportMapping FunctionImportName="del_supplier" FunctionName="ebidModel.Store.del_supplier" />
+          <FunctionImportMapping FunctionImportName="get_company" FunctionName="ebidModel.Store.get_company">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ebidModel.get_company_Result">
+                <ScalarProperty Name="srno" ColumnName="srno" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_supplierlist" FunctionName="ebidModel.Store.get_supplierlist">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ebidModel.get_supplierlist_Result">
+                <ScalarProperty Name="srno" ColumnName="srno" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Tenderid" ColumnName="Tenderid" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getitemslist" FunctionName="ebidModel.Store.getitemslist">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ebidModel.getitemslist_Result">
+                <ScalarProperty Name="srno" ColumnName="srno" />
+                <ScalarProperty Name="itemid" ColumnName="itemid" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemDesc" ColumnName="ItemDesc" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="FloorPrice" ColumnName="FloorPrice" />
+                <ScalarProperty Name="ReducePerBid" ColumnName="ReducePerBid" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Register" FunctionName="ebidModel.Store.Register" />
+          <FunctionImportMapping FunctionImportName="save_item" FunctionName="ebidModel.Store.save_item" />
+          <FunctionImportMapping FunctionImportName="save_supplier" FunctionName="ebidModel.Store.save_supplier" />
+          <FunctionImportMapping FunctionImportName="save_tender" FunctionName="ebidModel.Store.save_tender" />
+          <FunctionImportMapping FunctionImportName="get_live_auction" FunctionName="ebidModel.Store.get_live_auction">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ebidModel.get_live_auction_Result">
+                <ScalarProperty Name="srno" ColumnName="srno" />
+                <ScalarProperty Name="TenderId" ColumnName="TenderId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Tenderdesc" ColumnName="Tenderdesc" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="rolename" ColumnName="rolename" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_tender_detail" FunctionName="ebidModel.Store.get_tender_detail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ebidModel.get_tender_detail_Result">
+                <ScalarProperty Name="TenderId" ColumnName="TenderId" />
+                <ScalarProperty Name="Tenderdesc" ColumnName="Tenderdesc" />
+                <ScalarProperty Name="contactPerson" ColumnName="contactPerson" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="Attachment" ColumnName="Attachment" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Currenttime" ColumnName="Currenttime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_item_detail" FunctionName="ebidModel.Store.get_item_detail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ebidModel.get_item_detail_Result">
+                <ScalarProperty Name="srno" ColumnName="srno" />
+                <ScalarProperty Name="itemid" ColumnName="itemid" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemDesc" ColumnName="ItemDesc" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="FloorPrice" ColumnName="FloorPrice" />
+                <ScalarProperty Name="Bidmethod" ColumnName="Bidmethod" />
+                <ScalarProperty Name="ReducePerBid" ColumnName="ReducePerBid" />
+                <ScalarProperty Name="Leading" ColumnName="Leading" />
+                <ScalarProperty Name="BidCount" ColumnName="BidCount" />
+                <ScalarProperty Name="Biddercount" ColumnName="Biddercount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_Bid_detail" FunctionName="ebidModel.Store.get_Bid_detail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ebidModel.get_Bid_detail_Result">
+                <ScalarProperty Name="itemid" ColumnName="itemid" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="BiddateTime" ColumnName="BiddateTime" />
+                <ScalarProperty Name="BidPrice" ColumnName="BidPrice" />
+                <ScalarProperty Name="srno" ColumnName="srno" />
+                <ScalarProperty Name="fictitious_name" ColumnName="fictitious_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Add_Bid" FunctionName="ebidModel.Store.Add_Bid" />
+          <FunctionImportMapping FunctionImportName="get_ReduceBidPrice" FunctionName="ebidModel.Store.get_ReduceBidPrice">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ebidModel.get_ReduceBidPrice_Result">
+                <ScalarProperty Name="itemid" ColumnName="itemid" />
+                <ScalarProperty Name="BidPrice" ColumnName="BidPrice" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Delete_Item" FunctionName="ebidModel.Store.Delete_Item" />
+          <FunctionImportMapping FunctionImportName="get_role" FunctionName="ebidModel.Store.get_role" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ebidModel.get_role1_Result">
+                <ScalarProperty Name="rolename" ColumnName="rolename" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="file_upload" FunctionName="ebidModel.Store.file_upload" />
+          <FunctionImportMapping FunctionImportName="Tender_approve" FunctionName="ebidModel.Store.Tender_approve" />
+          <FunctionImportMapping FunctionImportName="add_min" FunctionName="ebidModel.Store.add_min" />
+          <FunctionImportMapping FunctionImportName="Add_notify" FunctionName="ebidModel.Store.Add_notify" />
+          <FunctionImportMapping FunctionImportName="get_notify" FunctionName="ebidModel.Store.get_notify">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ebidModel.get_notify_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Tenderid" ColumnName="Tenderid" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="NotifyDateTime" ColumnName="NotifyDateTime" />
+                <ScalarProperty Name="NotifyText" ColumnName="NotifyText" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="check_tendertime" FunctionName="ebidModel.Store.check_tendertime" />
+          <FunctionImportMapping FunctionImportName="Get_AddedSupplier" FunctionName="ebidModel.Store.Get_AddedSupplier">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ebidModel.Get_AddedSupplier_Result">
+                <ScalarProperty Name="srno" ColumnName="srno" />
+                <ScalarProperty Name="Tenderid" ColumnName="Tenderid" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="update_tenderStatus" FunctionName="ebidModel.Store.update_tenderStatus" />
+          <FunctionImportMapping FunctionImportName="check_SupplierAcceptance" FunctionName="ebidModel.Store.check_SupplierAcceptance" />
+          <FunctionImportMapping FunctionImportName="update_SupplierAcceptance" FunctionName="ebidModel.Store.update_SupplierAcceptance" />
+          <FunctionImportMapping FunctionImportName="ValidateGUID" FunctionName="ebidModel.Store.ValidateGUID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ebidModel.ValidateGUID_Result">
+                <ScalarProperty Name="Tenderid" ColumnName="Tenderid" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="clientid" ColumnName="clientid" />
+                <ScalarProperty Name="counts" ColumnName="counts" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_role1" FunctionName="ebidModel.Store.get_role1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ebidModel.get_role1_Result">
+                <ScalarProperty Name="rolename" ColumnName="rolename" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="updateTracking" FunctionName="ebidModel.Store.updateTracking" />
+          <FunctionImportMapping FunctionImportName="update_tenderStatus1" FunctionName="ebidModel.Store.update_tenderStatus1" />
+          <FunctionImportMapping FunctionImportName="get_Tracking" FunctionName="ebidModel.Store.get_Tracking">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ebidModel.get_Tracking_Result">
+                <ScalarProperty Name="TenderDesc" ColumnName="TenderDesc" />
+                <ScalarProperty Name="Decisionby" ColumnName="Decisionby" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="Decisionon" ColumnName="Decisionon" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_Bid_detail1" FunctionName="ebidModel.Store.get_Bid_detail1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ebidModel.get_Bid_detail1_Result">
+                <ScalarProperty Name="srno" ColumnName="srno" />
+                <ScalarProperty Name="itemid" ColumnName="itemid" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="BiddateTime" ColumnName="BiddateTime" />
+                <ScalarProperty Name="BidPrice" ColumnName="BidPrice" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="tenderitemreport" FunctionName="ebidModel.Store.tenderitemreport">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ebidModel.tenderitemreport_Result">
+                <ScalarProperty Name="itemid" ColumnName="itemid" />
+                <ScalarProperty Name="tenderid" ColumnName="tenderid" />
+                <ScalarProperty Name="enddate" ColumnName="enddate" />
+                <ScalarProperty Name="endtime" ColumnName="endtime" />
+                <ScalarProperty Name="tenderdesc" ColumnName="tenderdesc" />
+                <ScalarProperty Name="itemdesc" ColumnName="itemdesc" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="companyname" ColumnName="companyname" />
+                <ScalarProperty Name="statusname" ColumnName="statusname" />
+                <ScalarProperty Name="bidprice" ColumnName="bidprice" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="tenderitemreport_biddetail" FunctionName="ebidModel.Store.tenderitemreport_biddetail" />
+          <FunctionImportMapping FunctionImportName="tenderitemreport_headerdetail" FunctionName="ebidModel.Store.tenderitemreport_headerdetail" />
+          <FunctionImportMapping FunctionImportName="tenderitemreport_print" FunctionName="ebidModel.Store.tenderitemreport_print" />
+          <FunctionImportMapping FunctionImportName="getemail" FunctionName="ebidModel.Store.getemail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ebidModel.getemail_Result">
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ChangePassword" FunctionName="ebidModel.Store.ChangePassword" />
+          <FunctionImportMapping FunctionImportName="sendPasswordMail" FunctionName="ebidModel.Store.sendPasswordMail" />
+          <FunctionImportMapping FunctionImportName="checkdefault" FunctionName="ebidModel.Store.checkdefault" />
+          <EntitySetMapping Name="BidMethodMasters">
+            <EntityTypeMapping TypeName="ebidModel.BidMethodMaster">
+              <MappingFragment StoreEntitySet="BidMethodMaster">
+                <ScalarProperty Name="MethodName" ColumnName="MethodName" />
+                <ScalarProperty Name="Methodid" ColumnName="Methodid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bids">
+            <EntityTypeMapping TypeName="ebidModel.Bid">
+              <MappingFragment StoreEntitySet="Bids">
+                <ScalarProperty Name="ipaddress" ColumnName="ipaddress" />
+                <ScalarProperty Name="BidPrice" ColumnName="BidPrice" />
+                <ScalarProperty Name="BiddateTime" ColumnName="BiddateTime" />
+                <ScalarProperty Name="Clientid" ColumnName="Clientid" />
+                <ScalarProperty Name="itemid" ColumnName="itemid" />
+                <ScalarProperty Name="bidid" ColumnName="bidid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryMasters">
+            <EntityTypeMapping TypeName="ebidModel.CategoryMaster">
+              <MappingFragment StoreEntitySet="CategoryMaster">
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="companies">
+            <EntityTypeMapping TypeName="ebidModel.company">
+              <MappingFragment StoreEntitySet="company">
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CurrencyMasters">
+            <EntityTypeMapping TypeName="ebidModel.CurrencyMaster">
+              <MappingFragment StoreEntitySet="CurrencyMaster">
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="currencyid" ColumnName="currencyid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemTypeMasters">
+            <EntityTypeMapping TypeName="ebidModel.ItemTypeMaster">
+              <MappingFragment StoreEntitySet="ItemTypeMaster">
+                <ScalarProperty Name="typename" ColumnName="typename" />
+                <ScalarProperty Name="Typeid" ColumnName="Typeid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoginMasters">
+            <EntityTypeMapping TypeName="ebidModel.LoginMaster">
+              <MappingFragment StoreEntitySet="LoginMaster">
+                <ScalarProperty Name="Defaultpass" ColumnName="Defaultpass" />
+                <ScalarProperty Name="randompassword" ColumnName="randompassword" />
+                <ScalarProperty Name="clientpassword" ColumnName="clientpassword" />
+                <ScalarProperty Name="LoginIP" ColumnName="LoginIP" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="RegisterId" ColumnName="RegisterId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MinPeriods">
+            <EntityTypeMapping TypeName="ebidModel.MinPeriod">
+              <MappingFragment StoreEntitySet="MinPeriod">
+                <ScalarProperty Name="mins" ColumnName="mins" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="TimePeriod" ColumnName="TimePeriod" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="ebidModel.Notification">
+              <MappingFragment StoreEntitySet="Notifications">
+                <ScalarProperty Name="NotifyText" ColumnName="NotifyText" />
+                <ScalarProperty Name="NotifyDateTime" ColumnName="NotifyDateTime" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="Tenderid" ColumnName="Tenderid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegisterMasters">
+            <EntityTypeMapping TypeName="ebidModel.RegisterMaster">
+              <MappingFragment StoreEntitySet="RegisterMaster">
+                <ScalarProperty Name="Tin" ColumnName="Tin" />
+                <ScalarProperty Name="PanNo" ColumnName="PanNo" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="pincode" ColumnName="pincode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="RegAddress" ColumnName="RegAddress" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="RegisterRole" ColumnName="RegisterRole" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="RegisterId" ColumnName="RegisterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rolemasters">
+            <EntityTypeMapping TypeName="ebidModel.Rolemaster">
+              <MappingFragment StoreEntitySet="Rolemaster">
+                <ScalarProperty Name="rolename" ColumnName="rolename" />
+                <ScalarProperty Name="roleid" ColumnName="roleid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StateMasters">
+            <EntityTypeMapping TypeName="ebidModel.StateMaster">
+              <MappingFragment StoreEntitySet="StateMaster">
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="stateId" ColumnName="stateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusMasters">
+            <EntityTypeMapping TypeName="ebidModel.StatusMaster">
+              <MappingFragment StoreEntitySet="StatusMaster">
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="ebidModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="fictitious_name" ColumnName="fictitious_name" />
+                <ScalarProperty Name="EGuid" ColumnName="EGuid" />
+                <ScalarProperty Name="SupplierStatus" ColumnName="SupplierStatus" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Tenderid" ColumnName="Tenderid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tenders">
+            <EntityTypeMapping TypeName="ebidModel.Tender">
+              <MappingFragment StoreEntitySet="Tender">
+                <ScalarProperty Name="terms" ColumnName="terms" />
+                <ScalarProperty Name="Tstatus" ColumnName="Tstatus" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="TimePeriod" ColumnName="TimePeriod" />
+                <ScalarProperty Name="Endtime" ColumnName="Endtime" />
+                <ScalarProperty Name="Enddate" ColumnName="Enddate" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="TenderDesc" ColumnName="TenderDesc" />
+                <ScalarProperty Name="Attachment" ColumnName="Attachment" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="TenderId" ColumnName="TenderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TenderItems">
+            <EntityTypeMapping TypeName="ebidModel.TenderItem">
+              <MappingFragment StoreEntitySet="TenderItem">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="ReducePerBid" ColumnName="ReducePerBid" />
+                <ScalarProperty Name="BidMethod" ColumnName="BidMethod" />
+                <ScalarProperty Name="FloorPrice" ColumnName="FloorPrice" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="ItemCategory" ColumnName="ItemCategory" />
+                <ScalarProperty Name="ItemDesc" ColumnName="ItemDesc" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+                <ScalarProperty Name="Tenderid" ColumnName="Tenderid" />
+                <ScalarProperty Name="itemid" ColumnName="itemid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trackings">
+            <EntityTypeMapping TypeName="ebidModel.Tracking">
+              <MappingFragment StoreEntitySet="Tracking">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="TrackStatus" ColumnName="TrackStatus" />
+                <ScalarProperty Name="Decisionon" ColumnName="Decisionon" />
+                <ScalarProperty Name="Decisionby" ColumnName="Decisionby" />
+                <ScalarProperty Name="Tenderid" ColumnName="Tenderid" />
+                <ScalarProperty Name="Trackid" ColumnName="Trackid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UOMMasters">
+            <EntityTypeMapping TypeName="ebidModel.UOMMaster">
+              <MappingFragment StoreEntitySet="UOMMaster">
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="UOMid" ColumnName="UOMid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="get_v_tender_date">
+            <EntityTypeMapping TypeName="ebidModel.get_v_tender_date">
+              <MappingFragment StoreEntitySet="get_v_tender_date">
+                <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+                <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+                <ScalarProperty Name="tenderid" ColumnName="tenderid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_bidmin_record">
+            <EntityTypeMapping TypeName="ebidModel.v_bidmin_record">
+              <MappingFragment StoreEntitySet="v_bidmin_record">
+                <ScalarProperty Name="bidprice" ColumnName="bidprice" />
+                <ScalarProperty Name="clientid" ColumnName="clientid" />
+                <ScalarProperty Name="itemid" ColumnName="itemid" />
+                <ScalarProperty Name="bidid" ColumnName="bidid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="addmintrackings">
+            <EntityTypeMapping TypeName="ebidModel.addmintracking">
+              <MappingFragment StoreEntitySet="addmintracking">
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="Addmin" ColumnName="Addmin" />
+                <ScalarProperty Name="clientid" ColumnName="clientid" />
+                <ScalarProperty Name="ipaddress" ColumnName="ipaddress" />
+                <ScalarProperty Name="tenderid" ColumnName="tenderid" />
+                <ScalarProperty Name="mintrackingid" ColumnName="mintrackingid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="getsuppstatus1" FunctionName="ebidModel.Store.getsuppstatus">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ebidModel.getsuppstatus1_Result">
+                <ScalarProperty Name="clientid" ColumnName="clientid" />
+                <ScalarProperty Name="companyid" ColumnName="companyid" />
+                <ScalarProperty Name="SupplierStatus" ColumnName="SupplierStatus" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="resettender" FunctionName="ebidModel.Store.resettender" />
+          <FunctionImportMapping FunctionImportName="Save_Bid1" FunctionName="ebidModel.Store.Save_Bid" />
+          <FunctionImportMapping FunctionImportName="GetTerms" FunctionName="ebidModel.Store.GetTerms" />
+          <FunctionImportMapping FunctionImportName="AddTerms" FunctionName="ebidModel.Store.AddTerms" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
